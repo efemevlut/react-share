@@ -3,6 +3,9 @@ import Navbar from './components/Navbar';
 
 
 function App() {
+
+  console.log(process.env)
+  
   return (
     <div className="App">
       <Navbar />
