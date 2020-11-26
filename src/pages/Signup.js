@@ -13,6 +13,8 @@ const styles = makeStyles({
 });
 
 function Signup() {
+
+  console.log(firebase)
   const formik = useFormik({
     initialValues: {
       displayName: "",
@@ -20,10 +22,15 @@ function Signup() {
       password: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      firebase.register(values.email, values.password);
     },
   });
   const signupStyles = styles();
+
+  const handleGoogleButtonClick = () => {
+    firebase.useGoogleProvider();
+  }
 
   return (
     <Container maxWidth="sm" className={signupStyles.wrapper}>
@@ -61,11 +68,11 @@ function Signup() {
           </Grid>
           <Grid item xs={12}>
             <Button variant="contained" color="primary" fullWidth type="submit">
-              Submit
+              Register
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" fullWidth>
+            <Button variant="contained" color="primary" fullWidth onClick={handleGoogleButtonClick}>
               SignUp with Google
             </Button>
           </Grid>
