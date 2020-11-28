@@ -22,11 +22,13 @@ class Firebase {
     this.firebaseAuth = firebase.auth();
   }
   async register(displayName, email, password) {
-    await this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+    try {await this.firebaseAuth.createUserWithEmailAndPassword(email, password);
 
     this.firebaseAuth.currentUser.updateProfile({
-      displayName
-    })
+      displayName,
+    });} catch(err){
+      console.log("Firebase Error: ", err)
+    }
   }
 
   useGoogleProvider() {
@@ -36,7 +38,7 @@ class Firebase {
   }
 
   signin(email, password) {
-    this.firebaseAuth.signInWithEmailAndPassword(email, password)
+    this.firebaseAuth.signInWithEmailAndPassword(email, password);
   }
 
   signOut() {
