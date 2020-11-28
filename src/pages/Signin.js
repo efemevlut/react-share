@@ -23,7 +23,7 @@ function Signin() {
   };
 
   const handleFormSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    firebase.signin(values.email, values.password)
   };
 
   return (

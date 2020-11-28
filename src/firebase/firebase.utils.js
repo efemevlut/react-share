@@ -17,26 +17,31 @@ const prodConfig = {};
 const config = process.env.NODE_ENV === "development" ? devConfig : prodConfig;
 
 class Firebase {
-  constructor(){
+  constructor() {
     firebase.initializeApp(config);
-    this.firebaseAuth = firebase.auth();   
+    this.firebaseAuth = firebase.auth();
   }
-  register(email, password){
-    this.firebaseAuth.createUserWithEmailAndPassword(email, password)
+  async register(displayName, email, password) {
+    await this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+
+    this.firebaseAuth.currentUser.updateProfile({
+      displayName
+    })
   }
 
-  useGoogleProvider(){
+  useGoogleProvider() {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
-    googleProvider.setCustomParameters({prompt: "select_account"});
+    googleProvider.setCustomParameters({ prompt: "select_account" });
     this.firebaseAuth.signInWithPopup(googleProvider);
   }
 
-  signOut() {
-    this.firebaseAuth.signOut()
+  signin(email, password) {
+    this.firebaseAuth.signInWithEmailAndPassword(email, password)
   }
-    
-    
+
+  signOut() {
+    this.firebaseAuth.signOut();
+  }
 }
 
 export default new Firebase();
-
