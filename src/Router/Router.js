@@ -5,14 +5,16 @@ import Signin from "../pages/Signin";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Main from "../pages/Main";
+import UserDetail from "../pages/UserDetail";
 
 function AppRouter() {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/register" component={Signup} />
-        <Route path="/login" component={Signin} />
+        <Route exact path="/register" component={Signup} />
+        <Route exact path="/login" component={Signin} />
+        <Route exact path="/user/:id" component={UserDetail} />
         <Route path="/" component={Main} />
       </Switch>
       <Footer />

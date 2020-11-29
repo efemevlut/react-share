@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core";
+import { capitalize, Container, Grid } from "@material-ui/core";
 import axios from "axios";
 import MediaCard from "../components/MediaCard";
 
@@ -35,17 +35,23 @@ function Main() {
   }, []);
 
   return (
-    <Container className={mainStyles.wrapper} maxWidth="sm">
-      {userList?.map((user) => {
-        return (
-          <MediaCard
-            key={user?.id}
-            userImage={user?.picture}
-            userName={`${user?.title} ${user?.firstName} ${user?.lastName}`}
-            userEmail={user?.email}
-          />
-        );
-      })}
+    <Container className={mainStyles.wrapper}>
+      <Grid container spacing={5}>
+        {userList?.map((user) => {
+          return (
+            <Grid item xs={6} sm={4} key={user?.id}>
+              <MediaCard
+                id={user?.id}
+                userImage={user?.picture}
+                userName={`${capitalize(user?.title)} ${user?.firstName} ${
+                  user?.lastName
+                }`}
+                userEmail={user?.email}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
     </Container>
   );
 }
