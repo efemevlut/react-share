@@ -8,6 +8,10 @@ const stylesFunc = makeStyles((theme) => ({
   wrapper: {
     marginTop: "10rem",
     height: "calc(100vh - 19.0625rem)",
+    display:'flex',
+    flexDirection:'column',
+    minHeight: '100vh',
+    marginTop: "5rem",
     textAlign: "center",
   },
   avatar: {
