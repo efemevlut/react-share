@@ -1,3 +1,4 @@
+  
 import React from "react";
 import {
   Button,
@@ -71,9 +72,11 @@ function Signup() {
               label="Display Name"
               variant="outlined"
               fullWidth
-              {...formik.getFieldProps('displayName')}
+              {...formik.getFieldProps("displayName")}
               error={formik.touched.displayName && formik.errors.displayName}
-              helperText={formik.touched.displayName && formik.errors.displayName}
+              helperText={
+                formik.touched.displayName && formik.errors.displayName
+              }
             />
           </Grid>
           <Grid item xs={12}>
@@ -82,7 +85,7 @@ function Signup() {
               label="Email"
               variant="outlined"
               fullWidth
-              {...formik.getFieldProps('email')}
+              {...formik.getFieldProps("email")}
               error={formik.touched.email && formik.errors.email}
               helperText={formik.touched.email && formik.errors.email}
             />
@@ -94,7 +97,7 @@ function Signup() {
               variant="outlined"
               type="password"
               fullWidth
-              {...formik.getFieldProps('password')}
+              {...formik.getFieldProps("password")}
               error={formik.touched.password && formik.errors.password}
               helperText={formik.touched.password && formik.errors.password}
             />
@@ -114,6 +117,9 @@ function Signup() {
               SignUp with Google
             </Button>
           </Grid>
+          {/* 
+            //TODO: Add sign in text & links
+            */}
         </Grid>
       </form>
     </Container>
