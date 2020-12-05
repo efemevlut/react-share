@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container, CircularProgress } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { formatDateFunc } from "../helper/FormatDate";
+import FullProfileCard from "../components/FullProfileCard"
 
 const stylesFunc = makeStyles((theme) => ({
   wrapper: {
@@ -31,11 +32,19 @@ function UserDetail() {
 
   return (
     <Container className={mainStyles.wrapper}>
+      {console.log(userDetail)}
       {!userDetail ? (
         <CircularProgress />
       ) : (
-        <React.Fragment>
-          <img src={userDetail?.picture} alt="user" />
+        <FullProfileCard user={userDetail}/>
+      )}
+    </Container>
+  );
+}
+
+export default UserDetail;
+
+{/* <img src={userDetail?.picture} alt="user" />
           <Typography variant="h4">{userDetail?.firstName}</Typography>
           <Typography variant="h4">{userDetail?.lastName}</Typography>
           {userDetail?.registerDate && (
@@ -43,11 +52,4 @@ function UserDetail() {
               {formatDateFunc(userDetail.registerDate)}
             </Typography>
           )}
-          <Typography variant="h4">{userDetail?.phone}</Typography>
-        </React.Fragment>
-      )}
-    </Container>
-  );
-}
-
-export default UserDetail;
+          <Typography variant="h4">{userDetail?.phone}</Typography> */}

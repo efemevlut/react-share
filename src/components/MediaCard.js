@@ -37,7 +37,7 @@ export default function MediaCard({ id, userImage, userName, userEmail }) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea onClick={() => history.push(`/user/${id}`)}>
+      <CardActionArea>
         <CardMedia className={classes.media} image={userImage} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -52,7 +52,7 @@ export default function MediaCard({ id, userImage, userName, userEmail }) {
         {/* 
         //TODO: Add on click
         */}
-        <Button size="small" color="primary">
+        <Button size="small" color="primary"  onClick={() => history.push(`/user/${id}`)}>
           View Full Profile
         </Button>
         <Button
