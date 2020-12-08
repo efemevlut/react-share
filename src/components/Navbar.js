@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  user: {
+    marginLeft: 10,
+  }
 }));
 
 export default function Navbar() {
@@ -66,7 +69,7 @@ export default function Navbar() {
           </Typography>
           {currentUser ? (
             <div>
-              <IconButton
+              <IconButton               
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
@@ -74,7 +77,7 @@ export default function Navbar() {
                 color="inherit"
               >
                 {currentUser?.displayName}
-                <AccountCircle />
+                <AccountCircle className={classes.user}/>
               </IconButton>
               <Menu
                 id="menu-appbar"
